@@ -4,12 +4,12 @@
       <div class="modal">
         <textarea name="note" id="note" cols="30" rows="10"></textarea>
         <button> Add note  </button>
-        <button class="close"> X  </button>
+        <button class="close" @click="showModal = false">Close</button>
       </div>
     </div>
     <div class="container">
       <header>
-        <h1>Notes {{ showModal }}</h1>
+        <h1>Notes</h1>
         <button @click="showModal = true">+</button>
       </header>
     </div>
