@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="overlay">
+    <div v-if="showModal" class="overlay">
       <div class="modal">
         <textarea name="note" id="note" cols="30" rows="10"></textarea>
         <button> Add note  </button>
@@ -9,8 +9,8 @@
     </div>
     <div class="container">
       <header>
-        <h1>Notes</h1>
-        <button>+</button>
+        <h1>Notes {{ showModal }}</h1>
+        <button @click="showModal = true">+</button>
       </header>
     </div>
     <div class="cards-container">
@@ -22,11 +22,17 @@
   </main>
 </template>
 
+<script setup>
+import { ref } from "vue";
+
+const showModal = ref(false)
+</script>
+
 <style scoped>
 main {
   height: 100vh;
   width: 100vw;
-  background: grey;
+  background: white;
 }
 
 .container {
