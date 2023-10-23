@@ -3,7 +3,10 @@
     <div v-if="showModal" class="overlay">
       <div class="modal">
         <textarea v-model="newNote" name="note" id="note" cols="30" rows="10"></textarea>
-        <button v-if="newNote == newNote.length > 1 " @click="addNote"> Add note  </button>
+        <p v-if="newNote.length < 4 & newNote.length > 0"
+          errorMessage>{{ errorMessage }}
+          </p>
+        <button v-if="newNote.length >= 4" @click="addNote"> Add note  </button>
         <button class="close" @click="showModal = false">Close</button>
       </div>
     </div>
@@ -33,7 +36,7 @@ import { ref } from "vue";
 const showModal = ref(false);
 const newNote = ref("");
 const notes = ref([]);
- 
+const errorMessage = 'Note needs to be minimum 4 chracter or more';
 // Generate Random light color
 function getRandomcolor(){
   return "hsl("+ Math.random() * 36000000 + ", 100%, 75%)";
@@ -150,5 +153,9 @@ Header  button {
   .modal .close {
     background-color: red;
     margin-top: 7px;
+  }
+
+  .modal p {
+    color: red;
   }
 </style>
